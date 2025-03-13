@@ -17,6 +17,6 @@ import { HomeComponent } from './components/home/home.component';
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent] //Using the AppComponent at bootstrap to render the main component
 })
 export class AppModule { }
