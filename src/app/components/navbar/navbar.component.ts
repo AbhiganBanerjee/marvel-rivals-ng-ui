@@ -1,3 +1,4 @@
+//import the required services,interfaces,...etc.
 import { Component, OnInit } from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 
@@ -16,6 +17,7 @@ export class NavbarComponent implements OnInit{
   ngOnInit(): void {
     //Call the observe method on the observer ref, to track the device [Handset] responsive
     this.breakPointObserver.observe([Breakpoints.Handset]).subscribe((result)=>{
+      //If the Result matches with the SmallScreen Breakpoint of the device, then it sets true value
       this.isSmallScreen = result.matches;
     });
   }
