@@ -1,8 +1,14 @@
-<!-- ******* This is the main component that will be rendered at the top level ******-->
+<html>
+  <!-- ******* This is the main component that will be rendered at the top level ******-->
  
-<!-- At the Header part we will render the Navbar Component by its selector -->
-<header>
-  <!-- Inlcude the Custom Navbar component selector here -->
-  <app-navbar/>
-</header>
+  <!-- At the Header part we will render the Navbar Component by its selector -->
+  <header>
+    <!-- Inlcude the Custom Navbar component selector here -->
+    <app-navbar/>
+  </header>
 
+  <!-- At the Body Part Include the Router Outlets which will be rendered herre -->
+  <body class="container-fluid">
+    <router-outlet/>
+  </body>
+</html>

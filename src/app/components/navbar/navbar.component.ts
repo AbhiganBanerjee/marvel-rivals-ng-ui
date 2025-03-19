@@ -14,6 +14,41 @@ export class NavbarComponent implements OnInit{
   //Define a boolean flag to track the Small Screen status
   public isSmallScreen:boolean = false;
 
+  //Define an Array of single routes or Single List items without Dropdown links, to define nav-paths in Navbar
+  public singleListItems:any[] = [
+    {
+      'name':'home',
+      'path':'home'
+    },
+    { 
+      'name':'season story',
+      'path':'seasonStory'
+    }
+  ];
+
+  //Define an Array of List items as Dropdown menus in the navbar with sub-routes as options
+  public dropDownListItems:any[] = [
+    {
+      'name':'hero',
+
+      //define an inner array of paths for the dropdown-options
+      'paths':[
+        {
+          'title':'heroes',
+          'path':'heroes'
+        },
+        {
+          'title':'team up',
+          'path':'teamUp'
+        },
+        {
+          'title':'Hero Hot list',
+          'path':'heroHotList'
+        }
+      ]
+    }
+  ]
+
   ngOnInit(): void {
     //Call the observe method on the observer ref, to track the device [Handset] responsive
     this.breakPointObserver.observe([Breakpoints.Handset]).subscribe((result)=>{

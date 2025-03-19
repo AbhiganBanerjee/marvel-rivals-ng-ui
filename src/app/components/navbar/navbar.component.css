@@ -6,3 +6,23 @@
     margin-left: 23px;
 }
 
+/* Styles for the Anchor tags */
+#largeScreenAcnhors{
+    font-family: monospace;
+    font-weight: bold;
+    color: lightgray;
+    font-size: 20px;
+    text-decoration: none;
+}
+/* On hover just bright the color of the gray to white */
+#largeScreenAcnhors:hover{
+    font-weight: bolder;
+    color: white;
+}
+
+/* Styles for the list items to have some margin left attribute */
+#largeScreenListItems{
+    margin-left: 45px;
+    text-align: center;
+    margin-top: 10px;
+}
