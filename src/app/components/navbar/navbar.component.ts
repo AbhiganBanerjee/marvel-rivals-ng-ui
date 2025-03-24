@@ -46,6 +46,21 @@ export class NavbarComponent implements OnInit{
           'path':'heroHotList'
         }
       ]
+    },
+    {
+      'name':'game info',
+
+      //define an inner array of paths for the dropdown-options
+      'paths':[
+        {
+          'title':'game features',
+          'path':'gameFeatures'
+        },
+        {
+          'title':'Maps',
+          'path':'maps'
+        }
+      ]
     }
   ]
 

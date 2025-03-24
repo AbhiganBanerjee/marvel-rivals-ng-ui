@@ -29,11 +29,11 @@ brand logo height does not affect the navbar height as it is fixed -->
                 iterate each items and create one dropdown list item-->
                 <li *ngFor="let item of dropDownListItems" id="largeScreenListItems" class="nav-item dropdown">
                     <!-- Give the heading of the Drop-down opener dynamically from the item -->
-                    <a [routerLink]="item.name" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a [routerLink]="item.name" id="largeScreenAcnhors" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         {{item.name | uppercase}}
                     </a>
 
-                    <!-- Now, define the inner menu or options with in the drop-down via unordered list-->
+                    <!-- Now, define the inner menu or options with in the drop-down via unordered list -->
                     <ul class="dropdown-menu">
                         <!-- Iterate the nested array and create each drop-down options or items -->
                         <li *ngFor="let element of item.paths;let i = index">
@@ -47,13 +47,11 @@ brand logo height does not affect the navbar height as it is fixed -->
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                </li>
             </ul>
+
+            <!-- Absolute right side download button will go here -->
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button class="btn btn-outline-warning p-2 fw-bold fs-4" style="width: 200px; height: 50px;" type="submit">DOWNLOAD</button>
             </form>
         </div>
     </div>

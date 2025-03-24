@@ -23,6 +23,7 @@
 /* Styles for the list items to have some margin left attribute */
 #largeScreenListItems{
     margin-left: 45px;
-    text-align: center;
-    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
