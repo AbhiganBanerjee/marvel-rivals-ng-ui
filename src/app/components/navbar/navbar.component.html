@@ -3,56 +3,103 @@
 will be only visible in large screens, also fixing the navbar height, so that changing
 brand logo height does not affect the navbar height as it is fixed -->
 <nav class="navbar navbar-expand-lg bg-black fixed-top" data-bs-theme="dark" style="height: 54px;" *ngIf="!isSmallScreen">
-    <!-- Declare the Main Container as fluid for Device Responsive ness -->
-    <div class="container-fluid">
-        <!-- Provide a Brand Logo with the Same Home Page as Anchor to it-->
-        <a class="navbar-brand" href="#">
-            <!-- Giving proper brand image height and some margin and styles for alignment -->
-            <img src="../../../assets/brand_logo.png" class="brand-logo" alt="brand_logo">
-        </a>
+    <!-- Declare the Main Container as fluid for Device Responsive ness,
+    also divide the navbar in 3 portions like row-col -->
+    <div class="container-fluid row">
+        <!-- First col-1 poriton for the Brand Logo -->
+        <div class="col-1 mt-4 me-5">
+            <!-- Provide a Brand Logo with the Same Home Page as Anchor to it-->
+            <a class="navbar-brand" href="#">
+                <!-- Giving proper brand image height and some margin and styles for alignment -->
+                <img src="../../../assets/brand_logo.png" class="brand-logo" alt="brand_logo">
+            </a>
+        </div>
 
         <!-- Navbar toggler hamburger button with icon -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Inside this collapsable div we define the menu items of the navbar -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Declaring a un-ordered list which will contain the listItems as the navbar options -->
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <!-- First Iterate the Normal Single List items without Dropdown links, and add them in Navbar -->
-                <li id="largeScreenListItems" class="nav-item" *ngFor="let item of singleListItems">
-                    <a id="largeScreenAcnhors" [routerLink]="item.path">{{item.name | uppercase}}</a>
-                </li>
+        <!-- This is the 2nd column division in the navbar which consists the menu links-->
+        <div class="col-5">
+            <!-- Inside this collapsable div we define the menu items of the navbar -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Declaring a un-ordered list which will contain the listItems as the navbar options -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- First Iterate the Normal Single List items without Dropdown links, and add them in Navbar -->
+                    <li id="largeScreenListItems" class="nav-item" *ngFor="let item of singleListItems">
+                        <a id="largeScreenAcnhors" [routerLink]="item.path">{{item.name | uppercase}}</a>
+                    </li>
+    
+                    <!-- Define the List items with drop down & options as router links 
+                    iterate each items and create one dropdown list item-->
+                    <li *ngFor="let item of dropDownListItems" id="largeScreenListItems" class="nav-item dropdown">
+                        <!-- Give the heading of the Drop-down opener dynamically from the item -->
+                        <a [routerLink]="item.name" id="largeScreenAcnhors" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{item.name | uppercase}}
+                        </a>
+    
+                        <!-- Now, define the inner menu or options with in the drop-down via unordered list -->
+                        <ul class="dropdown-menu">
+                            <!-- Iterate the nested array and create each drop-down options or items -->
+                            <li *ngFor="let element of item.paths;let i = index">
+                                <!-- embed each option with a link or anchor or route path -->
+                                <a class="dropdown-item" [routerLink]="element.path">{{element.title | uppercase}}</a>
+                                
+                                <!-- Define a Divider line, except after the last option don't include it
+                                that is why upto before the last index it will give a divider(for 0,1 it will give
+                                for 2 index it will not give divider) -->
+                                <hr *ngIf="i<item.paths.length-1" class="dropdown-divider"/>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-                <!-- Define the List items with drop down & options as router links 
-                iterate each items and create one dropdown list item-->
-                <li *ngFor="let item of dropDownListItems" id="largeScreenListItems" class="nav-item dropdown">
-                    <!-- Give the heading of the Drop-down opener dynamically from the item -->
-                    <a [routerLink]="item.name" id="largeScreenAcnhors" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{item.name | uppercase}}
-                    </a>
+        <!-- Define some blank space in between the menu links and the right hand side download button container -->
+        <div class="col-1">
 
-                    <!-- Now, define the inner menu or options with in the drop-down via unordered list -->
-                    <ul class="dropdown-menu">
-                        <!-- Iterate the nested array and create each drop-down options or items -->
-                        <li *ngFor="let element of item.paths;let i = index">
-                            <!-- embed each option with a link or anchor or route path -->
-                            <a class="dropdown-item" [routerLink]="element.path">{{element.title | uppercase}}</a>
-                            
-                            <!-- Define a Divider line, except after the last option don't include it
-                            that is why upto before the last index it will give a divider(for 0,1 it will give
-                            for 2 index it will not give divider) -->
-                            <hr *ngIf="i<item.paths.length-1" class="dropdown-divider"/>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+        </div>
 
-            <!-- Absolute right side download button will go here -->
-            <form class="d-flex" role="search">
-                <button class="btn btn-outline-warning p-2 fw-bold fs-4" style="width: 200px; height: 50px;" type="submit">DOWNLOAD</button>
-            </form>
+        <!-- This container(row) will be in Absolute right and will contain these as cols -:
+          side download button, language drop down, and user login will go here 
+          So this outer container is further chunked into 3 parts for 3 buttons basically 
+          some margin-left is configured to properly allign the container at the right hand side
+        -->
+        <div class="col-5 row justify-content-center align-items-center d-flex" style="margin-left: 45px;">
+            <!-- This is the first col for representing the language selection icon and button -->
+            <div class="col-1">
+                <!-- Define the Dropdown for Langauge Selection -->
+                <div class="dropdown-center">
+                    <!-- Give the Globe Icon as the Dropdown selection icon -->
+                    <img 
+                        class="dropdown-toggle" 
+                        data-bs-toggle="dropdown"
+                        src="https://www.marvelrivals.com/pc/gw/20241128194803/img/lan_1e24db6d.png" 
+                        alt="globe_icon"
+                        height="22" 
+                    />
+                    <div class="dropdown-menu dropdown-menu-lg-end">
+                      <a class="dropdown-item" href="#">English</a>
+                      <a class="dropdown-item" href="#">Bengali</a>
+                      <a class="dropdown-item" href="#">Spanish</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- This is the 2nd Col for representing the User Login working on login button??-->
+            <div class="col-3">
+                <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                    <button type="button" class="btn bi bi-person-circle"></button>
+                    <button type="button" class="btn btn-outline-primary">LOG IN</button>
+                </div>
+            </div>
+
+            <!-- This column is used to show the big Download button -->
+            <div id="downloadButtonForLargeScreen" class="col-5 w-50 fs-3" role="button">
+                DOWNLOAD
+            </div>
         </div>
     </div>
 </nav>

@@ -27,3 +27,13 @@
     align-items: center;
     display: flex;
 }
+
+/* Styles for the yellow download button at the right end for large screen */
+#downloadButtonForLargeScreen{
+    text-align: center;
+    font-family: monospace;
+    font-weight: bolder;
+    background-color: yellow;
+    padding: 6px;
+    clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
