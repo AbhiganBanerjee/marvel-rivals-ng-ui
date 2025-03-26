@@ -44,7 +44,7 @@ brand logo height does not affect the navbar height as it is fixed -->
                             <!-- Iterate the nested array and create each drop-down options or items -->
                             <li *ngFor="let element of item.paths;let i = index">
                                 <!-- embed each option with a link or anchor or route path -->
-                                <a class="dropdown-item" [routerLink]="element.path">{{element.title | uppercase}}</a>
+                                <a id="nestedListAnchors" class="dropdown-item" [routerLink]="element.path">{{element.title | uppercase}}</a>
                                 
                                 <!-- Define a Divider line, except after the last option don't include it
                                 that is why upto before the last index it will give a divider(for 0,1 it will give
@@ -67,18 +67,18 @@ brand logo height does not affect the navbar height as it is fixed -->
           So this outer container is further chunked into 3 parts for 3 buttons basically 
           some margin-left is configured to properly allign the container at the right hand side
         -->
-        <div class="col-5 row justify-content-center align-items-center d-flex" style="margin-left: 45px;">
-            <!-- This is the first col for representing the language selection icon and button -->
-            <div class="col-1">
+        <div class="col-5 justify-content-center align-items-center d-flex flex-wrap" style="margin-left: 85px;">
+            <!-- This is the first part for representing the language selection icon and button -->
+            <div style="margin-bottom: 3px;">
                 <!-- Define the Dropdown for Langauge Selection -->
-                <div class="dropdown-center">
+                <div class="dropdown">
                     <!-- Give the Globe Icon as the Dropdown selection icon -->
                     <img 
                         class="dropdown-toggle" 
                         data-bs-toggle="dropdown"
                         src="https://www.marvelrivals.com/pc/gw/20241128194803/img/lan_1e24db6d.png" 
                         alt="globe_icon"
-                        height="22" 
+                        height="21" 
                     />
                     <div class="dropdown-menu dropdown-menu-lg-end">
                       <a class="dropdown-item" href="#">English</a>
@@ -88,16 +88,13 @@ brand logo height does not affect the navbar height as it is fixed -->
                 </div>
             </div>
 
-            <!-- This is the 2nd Col for representing the User Login working on login button??-->
-            <div class="col-3">
-                <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                    <button type="button" class="btn bi bi-person-circle"></button>
-                    <button type="button" class="btn btn-outline-primary">LOG IN</button>
-                </div>
+            <!-- This is the 2nd part for representing the User Login button -->
+            <div class="ms-1">
+                <a id="largeScreenAcnhors" class="bi bi-person-circle btn" style="font-size: 16px;" role="button"> LOG IN</a>
             </div>
 
             <!-- This column is used to show the big Download button -->
-            <div id="downloadButtonForLargeScreen" class="col-5 w-50 fs-3" role="button">
+            <div id="downloadButtonForLargeScreen" class="w-50 fs-3" role="button">
                 DOWNLOAD
             </div>
         </div>

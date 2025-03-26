@@ -37,3 +37,13 @@
     padding: 6px;
     clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
+
+/* Styles for the drop down list items hover affect */
+#nestedListAnchors{
+    font-weight: bolder;
+    color: white;
+}
+#nestedListAnchors:hover{
+    font-weight: bolder;
+    color: yellow;
+}
