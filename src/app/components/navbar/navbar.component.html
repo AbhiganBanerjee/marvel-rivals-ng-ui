@@ -28,14 +28,28 @@ brand logo height does not affect the navbar height as it is fixed -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <!-- First Iterate the Normal Single List items without Dropdown links, and add them in Navbar -->
                     <li id="largeScreenListItems" class="nav-item" *ngFor="let item of singleListItems">
-                        <a id="largeScreenAcnhors" [routerLink]="item.path">{{item.name | uppercase}}</a>
+                        <a 
+                            routerLinkActive="active-link"
+                            [routerLinkActiveOptions]="{exact:true}"
+                            class="largeScreenAcnhors" [routerLink]="item.path"
+                        >
+                            {{item.name | uppercase}}
+                        </a>
                     </li>
     
                     <!-- Define the List items with drop down & options as router links 
                     iterate each items and create one dropdown list item-->
                     <li *ngFor="let item of dropDownListItems" id="largeScreenListItems" class="nav-item dropdown">
-                        <!-- Give the heading of the Drop-down opener dynamically from the item -->
-                        <a [routerLink]="item.name" id="largeScreenAcnhors" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- Give the heading of the Drop-down opener dynamically from the item 
+                        also make the routerLinkActive action to highlight it when it is active page-->
+                        <a 
+                            [routerLink]="item.name" 
+                            routerLinkActive="active-link"
+                            [routerLinkActiveOptions]="{exact:true}" 
+                            class="nav-link dropdown-toggle largeScreenAcnhors" 
+                            role="button" data-bs-toggle="dropdown" 
+                            aria-expanded="false"
+                        >
                             {{item.name | uppercase}}
                         </a>
     
@@ -102,47 +116,68 @@ brand logo height does not affect the navbar height as it is fixed -->
 </nav>
 
 
+
 <!-- ## SMALL SCREEN NavBar Component ## -->
 <!-- Only visible small handset breakpoint screens -->
 <nav class="navbar navbar-expand-lg bg-black fixed-top" data-bs-theme="dark" *ngIf="isSmallScreen">
-    <!-- Declare the Main Container as fluid for Device Responsive ness -->
-    <div class="container-fluid">
-        <!-- Provide a Brand Logo with the Same Home Page as Anchor to it-->
-        <a class="navbar-brand" href="#">
-            <!-- Giving proper brand image height and some margin and styles for alignment -->
-            <img src="../../../assets/brand_logo.png" style="height: 30px;" alt="brand_logo">
-        </a>
+    <!-- Declare the Main Container as fluid for Device Responsive ness,
+    Also make this row so it can be further divided into 3 parts one part
+    for the brand logo next the download button and the lastone is for 
+    hamburger logo and login button in the small screen nav -->
+    <div class="container-fluid row justify-content-center align-items-center d-flex">
+        <!-- The first division is for the Brand-Logo -->
+        <div class="col-4">
+            <!-- Provide a Brand Logo with the Same Home Page as Anchor to it-->
+            <a class="navbar-brand" href="#">
+                <!-- Giving proper brand image height and some margin and styles for alignment -->
+                <img src="../../../assets/brand_logo.png" style="height: 30px;" alt="brand_logo">
+            </a>
+        </div>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                </li>
-            </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+        <!-- The 2nd division is for the Download button -->
+        <div class="col-5 d-flex align-items-stretch">
+            <div id="downloadButtonForSmallScreen" class="w-100 fs-6" role="button">
+                DOWNLOAD
+            </div>
+        </div>
+
+        <!-- The 3rd division is for the Hamburger button and the Login button -->
+        <div class="col-3">
+            LOGIN 
         </div>
     </div>
 </nav>
+
+<!-- Working on small screen nav -->
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+            </a>
+            <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+    </ul>
+    <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+</div>

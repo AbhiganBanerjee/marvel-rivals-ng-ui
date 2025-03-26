@@ -7,7 +7,7 @@
 }
 
 /* Styles for the Anchor tags */
-#largeScreenAcnhors{
+.largeScreenAcnhors{
     font-family: monospace;
     font-weight: bold;
     color: lightgray;
@@ -15,14 +15,15 @@
     text-decoration: none;
 }
 /* On hover just bright the color of the gray to white */
-#largeScreenAcnhors:hover{
+.largeScreenAcnhors:hover{
     font-weight: bolder;
     color: white;
 }
 
 /* Styles for the list items to have some margin left attribute */
 #largeScreenListItems{
-    margin-left: 45px;
+    margin-left: 5px;
+    margin-right: 40px;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -35,7 +36,18 @@
     font-weight: bolder;
     background-color: yellow;
     padding: 6px;
-    clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%); /* Clip path is used to give the inclined affect to the download button */
+}
+
+/* Styles for the yellow download button at the middle for small screen */
+#downloadButtonForSmallScreen{
+    background-color: yellow;
+    color: black;
+    font-weight: bolder;
+    text-align: center;
+    height: 45px; /* Makes it stretch to full navbar height */
+    padding: 10px; /* Removes extra space */
+    clip-path: polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%); /* Clip path is used to give the inclined affect to the download button */
 }
 
 /* Styles for the drop down list items hover affect */
@@ -44,6 +56,12 @@
     color: white;
 }
 #nestedListAnchors:hover{
+    font-weight: bolder;
+    color: yellow;
+}
+
+/* Create a class to apply a special affect for the Active Anchor or Router path */
+.active-link{
     font-weight: bolder;
     color: yellow;
 }

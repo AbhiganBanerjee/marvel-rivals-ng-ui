@@ -9,4 +9,5 @@ body {
     padding-top: 25px; /* Adjust based on the navbar height */
     margin: 0;
     overflow-x: hidden; /* Prevents horizontal scroll */
+    overflow-y: hidden; /* Prevents vertical scroll */
 }
