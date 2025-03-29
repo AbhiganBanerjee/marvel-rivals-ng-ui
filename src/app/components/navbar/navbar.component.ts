@@ -71,4 +71,12 @@ export class NavbarComponent implements OnInit{
       this.isSmallScreen = result.matches;
     });
   }
+
+  //Method to change the Hamburger icon color on click in Small Screen
+  //Use a boolean to track if it is clicked or not
+  public isHamburgerClicked:boolean = false;
+  public hamburgerIconColorChange(){
+    //Toogle the click boolan on click, so that based on that className can be changed
+    this.isHamburgerClicked = (this.isHamburgerClicked==true)?false:true;
+  }
 }

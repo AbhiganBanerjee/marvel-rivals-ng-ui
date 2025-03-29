@@ -119,65 +119,84 @@ brand logo height does not affect the navbar height as it is fixed -->
 
 <!-- ## SMALL SCREEN NavBar Component ## -->
 <!-- Only visible small handset breakpoint screens -->
-<nav class="navbar navbar-expand-lg bg-black fixed-top" data-bs-theme="dark" *ngIf="isSmallScreen">
+<nav class="navbar navbar-expand-sm bg-black fixed-top row" data-bs-theme="dark" *ngIf="isSmallScreen" style="height: auto;">
     <!-- Declare the Main Container as fluid for Device Responsive ness,
     Also make this row so it can be further divided into 3 parts one part
     for the brand logo next the download button and the lastone is for 
     hamburger logo and login button in the small screen nav -->
-    <div class="container-fluid row justify-content-center align-items-center d-flex">
+    <div class="container-fluid justify-content-center align-items-center d-flex">
         <!-- The first division is for the Brand-Logo -->
-        <div class="col-4">
+        <div class="col-1 ms-1">
             <!-- Provide a Brand Logo with the Same Home Page as Anchor to it-->
             <a class="navbar-brand" href="#">
                 <!-- Giving proper brand image height and some margin and styles for alignment -->
-                <img src="../../../assets/brand_logo.png" style="height: 30px;" alt="brand_logo">
+                <img 
+                    src="../../../assets/brand_logo.png" 
+                    style="height: 25px;" 
+                    alt="brand_logo"
+                    class="mb-2"
+                >
             </a>
         </div>
 
         <!-- The 2nd division is for the Download button -->
-        <div class="col-5 d-flex align-items-stretch">
-            <div id="downloadButtonForSmallScreen" class="w-100 fs-6" role="button">
+        <div class="col-2 text-center">
+            <div id="downloadButtonForSmallScreen" class="text-center" role="button">
                 DOWNLOAD
             </div>
         </div>
 
         <!-- The 3rd division is for the Hamburger button and the Login button -->
-        <div class="col-3">
-            LOGIN 
+        <div class="col-8 ms-3">
+            <span style="font-size: 10px; float: right;">
+                <a href="" class="bi bi-person-circle text-decoration-none text-white fw-bold">
+                    LOG IN
+                </a>
+                <span 
+                    class="navbar-toggler" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#navbarSupportedContent" 
+                    (click)="hamburgerIconColorChange()"
+                >
+                    <!-- Conditionally change the hamburger icon color on the click of the button -->
+                    <i 
+                        [ngClass]="isHamburgerClicked?'bi bi-list text-warning':'bi bi-list text-white'" 
+                        id="hamBurgerIcon">
+                    </i>
+                </span>
+            </span>
         </div>
+    </div>
+
+
+    <!-- Next work on the contents of the collapsable navigation window?? -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
     </div>
 </nav>
 
-<!-- Working on small screen nav -->
-
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-            </a>
-            <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-    </ul>
-    <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-</div>

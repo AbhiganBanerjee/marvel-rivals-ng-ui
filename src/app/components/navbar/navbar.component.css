@@ -45,9 +45,12 @@
     color: black;
     font-weight: bolder;
     text-align: center;
-    height: 45px; /* Makes it stretch to full navbar height */
-    padding: 10px; /* Removes extra space */
-    clip-path: polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%); /* Clip path is used to give the inclined affect to the download button */
+    height: 32px; /* Makes it stretch to full navbar height */
+    padding: 2px; /* Removes extra space */
+    clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);/* Clip path is used to give the inclined affect to the download button */
+    font-size: 20px;
+    width: 140px;
+    margin-left: 40px;
 }
 
 /* Styles for the drop down list items hover affect */
@@ -64,4 +67,11 @@
 .active-link{
     font-weight: bolder;
     color: yellow;
+}
+
+/* Define styles for Hamburger icon in small Screen */
+#hamBurgerIcon{
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
 }
