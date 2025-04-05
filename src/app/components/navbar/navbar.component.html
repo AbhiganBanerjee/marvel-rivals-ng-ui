@@ -104,7 +104,7 @@ brand logo height does not affect the navbar height as it is fixed -->
 
             <!-- This is the 2nd part for representing the User Login button -->
             <div class="ms-1">
-                <a id="largeScreenAcnhors" class="bi bi-person-circle btn" style="font-size: 16px;" role="button"> LOG IN</a>
+                <a id="largeScreenLoginButton" class="bi bi-person-circle btn" style="font-size: 16px;" role="button"> LOG IN</a>
             </div>
 
             <!-- This column is used to show the big Download button -->
@@ -149,7 +149,8 @@ brand logo height does not affect the navbar height as it is fixed -->
         <!-- The 3rd division is for the Hamburger button and the Login button -->
         <div class="col-8 ms-3">
             <span style="font-size: 10px; float: right;">
-                <a href="" class="bi bi-person-circle text-decoration-none text-white fw-bold">
+                <!-- Define the login button with the same large screen id for same hover effects -->
+                <a href="" class="bi bi-person-circle text-decoration-none text-white fw-bold" id="largeScreenLoginButton">
                     LOG IN
                 </a>
                 <span 
@@ -158,9 +159,9 @@ brand logo height does not affect the navbar height as it is fixed -->
                     data-bs-target="#navbarSupportedContent" 
                     (click)="hamburgerIconColorChange()"
                 >
-                    <!-- Conditionally change the hamburger icon color on the click of the button -->
+                    <!-- Conditionally change the hamburger icon color and logo on the click of the button -->
                     <i 
-                        [ngClass]="isHamburgerClicked?'bi bi-list text-warning':'bi bi-list text-white'" 
+                        [ngClass]="isHamburgerClicked?'bi bi-x-lg text-warning':'bi bi-list text-white'" 
                         id="hamBurgerIcon">
                     </i>
                 </span>
@@ -168,35 +169,52 @@ brand logo height does not affect the navbar height as it is fixed -->
         </div>
     </div>
 
-
-    <!-- Next work on the contents of the collapsable navigation window?? -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
+    <!-- Next work on the contents of the collapsable navigation window.
+    Here we define the Options inside the navigation bar when it is 
+    expanded by the hamburger icon those contents 
+    Almost done the expandable navbar in small screen?
+    -->
+    <div class="collapse navbar-collapse text-end" id="navbarSupportedContent">
+        <!-- Define the Navbar contents as un ordered list for the expanded navbar in small scren -->
+        <ul class="navbar-nav me-3 mb-2 mb-lg-0">
+            <!-- Iterate through the singleListItem array and define list items as options -->
+            <li class="nav-item mt-2" *ngFor="let item of singleListItems">
+                <!-- Define the Anchors for the options -->
+                <a
+                    class="smallScreenAnchors"
+                    [routerLink]="item.path"
+                    routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{exact:true}"         
+                >
+                    {{item.name | uppercase}}
                 </a>
-                <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </li>
+
+            <!-- Now its time to iterate the nested options menu options for the expandable navbar -->
+            <li *ngFor="let item of dropDownListItems" class="nav-item dropdown">
+                <!-- Give the heading of the Drop-down opener dynamically from the item 
+                also make the routerLinkActive action to highlight it when it is active page-->
+                <a 
+                    [routerLink]="item.name" 
+                    routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{exact:true}" 
+                    class="nav-link dropdown-toggle smallScreenAnchors" 
+                    role="button" data-bs-toggle="dropdown" 
+                    aria-expanded="false"
+                >
+                    {{item.name | uppercase}}
+                </a>
+
+                <!-- Now, define the inner menu or options with in the drop-down via unordered list -->
+                <ul class="dropdown-menu text-end bg-black border-0">
+                    <!-- Iterate the nested array and create each drop-down options or items -->
+                    <li *ngFor="let element of item.paths;let i = index">
+                        <!-- embed each option with a link or anchor or route path -->
+                        <a id="nestedListAnchors" class="dropdown-item" [routerLink]="element.path">{{element.title | uppercase}}</a>
+                    </li>
                 </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-            </li>
         </ul>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
     </div>
 </nav>
 

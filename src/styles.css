@@ -4,10 +4,9 @@
 html, body { height: 100%; }
 body { 
     font-family: monospace, "Helvetica Neue", sans-serif; 
-
     /* Added so that new content exactly adds after the navbar */
     padding-top: 25px; /* Adjust based on the navbar height */
     margin: 0;
-    overflow-x: hidden; /* Prevents horizontal scroll */
+   /* overflow-x: hidden; /* Prevents horizontal scroll 
     overflow-y: hidden; /* Prevents vertical scroll */
 }

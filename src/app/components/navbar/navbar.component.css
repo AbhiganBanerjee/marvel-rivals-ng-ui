@@ -20,6 +20,14 @@
     color: white;
 }
 
+/* Styles for the Login Icon in the Big screen Navbar with hover affects*/
+#largeScreenLoginButton{
+    color: lightgray !important;
+}
+#largeScreenLoginButton:hover{
+    color: white !important;
+}
+
 /* Styles for the list items to have some margin left attribute */
 #largeScreenListItems{
     margin-left: 5px;
@@ -66,7 +74,7 @@
 /* Create a class to apply a special affect for the Active Anchor or Router path */
 .active-link{
     font-weight: bolder;
-    color: yellow;
+    color: yellow !important;
 }
 
 /* Define styles for Hamburger icon in small Screen */
@@ -74,4 +82,16 @@
     font-size: 16px;
     font-weight: bold;
     color: white;
+}
+
+/* Define styles for small screen menu anchors */
+.smallScreenAnchors{
+    font-family: monospace;
+    font-size: 21px;
+    font-weight: bold;
+    color: lightgray !important;
+    text-decoration: none;
+}
+.smallScreenAnchors:hover{
+    color: yellow !important;
 }
