@@ -141,7 +141,9 @@ brand logo height does not affect the navbar height as it is fixed -->
 
         <!-- The 2nd division is for the Download button -->
         <div class="col-2 text-center">
-            <div id="downloadButtonForSmallScreen" class="text-center" role="button">
+            <!-- Also when the Humburger icon will be clicked this Download button needed to be hidden
+            for that conditionally bootstrap class d-none, d-block will be given based on ngClass -->
+            <div id="downloadButtonForSmallScreen"  [ngClass]="isHamburgerClicked?'text-center d-none':'text-center d-block'"  role="button">
                 DOWNLOAD
             </div>
         </div>
@@ -150,7 +152,9 @@ brand logo height does not affect the navbar height as it is fixed -->
         <div class="col-8 ms-3">
             <span style="font-size: 10px; float: right;">
                 <!-- Define the login button with the same large screen id for same hover effects -->
-                <a href="" class="bi bi-person-circle text-decoration-none text-white fw-bold" id="largeScreenLoginButton">
+                <!-- Also on the Hamburger button click, the LogIn button should hide that is why ngStyle
+                is used to dynamically hide the button on Hamburger clicked -->
+                <a href="" [ngStyle]="isHamburgerClicked?{'display':'none'}:{'display':''}" class="bi bi-person-circle text-decoration-none text-white fw-bold" id="largeScreenLoginButton">
                     LOG IN
                 </a>
                 <span 
@@ -161,7 +165,7 @@ brand logo height does not affect the navbar height as it is fixed -->
                 >
                     <!-- Conditionally change the hamburger icon color and logo on the click of the button -->
                     <i 
-                        [ngClass]="isHamburgerClicked?'bi bi-x-lg text-warning':'bi bi-list text-white'" 
+                        [ngClass]="isHamburgerClicked?'bi bi-x-lg text-light':'bi bi-list text-white'" 
                         id="hamBurgerIcon">
                     </i>
                 </span>
