@@ -1,0 +1,8 @@
+aside{
+    /* Opacity is used here to fade the bg of the aside a little bit like transparent */
+    opacity: 0.7;
+}
+a:hover{
+    /* on each of the social media item hover the color will change to darkgray */
+    color: darkgray !important;
+}

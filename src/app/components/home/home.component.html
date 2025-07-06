@@ -1,7 +1,11 @@
 <p>home works!</p>
 
-<!-- End-0 and bottom-0 means at the bottom right corner of the page it will remain fixed  -->
-<aside class="text-info position-fixed end-0 bottom-0 border border-primary p-2 d-flex">
-    <!-- Iterate aside items array which will be received from Spring Boot API
-    we are building the API first then we will code here??? -->
+<!-- End-0 and bottom-0 means at the bottom right corner of the page it will remain fixed 
+aside is a SEO friendly component, for those social media advertisement -->
+<aside class="text-white position-fixed end-0 bottom-0 bg-dark d-flex">
+    <!-- Iterate aside items array which will be received from Spring Boot API 
+    for each item create an Anchor with the specified social media link and style them-->
+    <a *ngFor="let item of asideItems" class="bi bi-{{item.socialMediaPlatformName}} ms-2 me-2 fs-5 text-decoration-none text-white"  [href]="item.path">
+
+    </a>
 </aside>
